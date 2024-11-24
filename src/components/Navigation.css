@@ -1,16 +1,4 @@
-.nav {
-    z-index: 1;
-    position: fixed;
-    top: 50px;
-    left: 10px;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    padding: 10px 20px;
-    box-shadow: 0 13px 27px -5px rgba(50, 50, 93, 0.25),
-      0 8px 16px -8px rgba(0, 0, 0, 0.3), 0 -6px 16px -6px rgba(0, 0, 0, 0.025);
-    border-radius: 5px;
-  }
+
   
   @media screen and (max-width: 1090px) {
     .nav {
@@ -18,18 +6,48 @@
       top: initial;
       bottom: 0px;
       width: 100%;
+      
     }
+  }
+  
+  .nav {
+    padding: 20px;
+    margin: 20px;
+
+  }
+
+
+
+
+  .nav {
+    display: flex;
+    justify-content: space-between; /* 좌우 정렬 */
+    align-items: center; /* 세로 중앙 정렬 */
+    padding: 20px;
+    margin: 20px;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
+    gap: 30px; /* 메뉴 간격 */
+  }
+  
+  .nav-right {
+    display: flex;
+    align-items: center; /* 세로 중앙 정렬 */
   }
   
   .nav a {
     text-decoration: none;
-    color: #0008fc;
+    color: black;
     text-transform: uppercase;
     font-size: 12px;
-    text-align: center;
     font-weight: 600;
+    padding: 0 10px;
   }
   
-  .nav a:not(:last-child) {
-    margin-bottom: 20px;
+  .nav img {
+    height: 50px;
   }
+  
