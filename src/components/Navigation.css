@@ -1,53 +1,50 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff2') format('woff2'),
+       url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
 
-  
-  @media screen and (max-width: 1090px) {
-    .nav {
-      left: initial;
-      top: initial;
-      bottom: 0px;
-      width: 100%;
-      
-    }
-  }
-  
+@media screen and (max-width: 1090px) {
   .nav {
-    padding: 20px;
-    margin: 20px;
+    left: initial;
+    top: initial;
+    bottom: 0px;
+    width: 100%;
+  }
+}
 
-  }
+.nav {
+  display: flex;
+  justify-content: space-between; /* 좌우 정렬 */
+  align-items: center; /* 세로 중앙 정렬 */
+  padding: 20px;
+  margin: 0;
+  font-family: 'Pretendard-Regular', sans-serif; /* 기본 폰트 설정 */
+}
 
+.nav-left {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+  gap: 30px; /* 메뉴 간격 */
+}
 
+.nav-right {
+  display: flex;
+  align-items: center; /* 세로 중앙 정렬 */
+}
 
+.nav a {
+  font-family: 'Pretendard-Regular', sans-serif; /* 링크에도 폰트 설정 */
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 0 10px;
+}
 
-  .nav {
-    display: flex;
-    justify-content: space-between; /* 좌우 정렬 */
-    align-items: center; /* 세로 중앙 정렬 */
-    padding: 20px;
-    margin: 20px;
-  }
-  
-  .nav-left {
-    display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-    gap: 30px; /* 메뉴 간격 */
-  }
-  
-  .nav-right {
-    display: flex;
-    align-items: center; /* 세로 중앙 정렬 */
-  }
-  
-  .nav a {
-    text-decoration: none;
-    color: black;
-    text-transform: uppercase;
-    font-size: 12px;
-    font-weight: 600;
-    padding: 0 10px;
-  }
-  
-  .nav img {
-    height: 50px;
-  }
-  
+.nav img {
+  height: 50px;
+}
