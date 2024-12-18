@@ -84,16 +84,43 @@ function PostListItem({ post, onClick }) {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handleDelete = () => {
-        setIsModalOpen(true);
+        setIsModalOpen(true); // 모달 열기
     };
 
     const handleConfirmDelete = () => {
-        setIsModalOpen(false);
-        console.log(`Post with id ${post.id} deleted.`); // 실제 삭제 로직을 여기에 추가
+        const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NDQwMDQ1LCJpYXQiOjE3MzQzNTM2NDUsImp0aSI6ImFmOGZjNWI1YmE3NzQ0NmJiMjBlMmQzMTJmNmQ5NzRkIiwidXNlcl9pZCI6Mn0.RI2P7VSa0vD2qoRR3PPfOtiWJ6Zrn6NpFJTX9dPAe-w";
+
+        if (!accessToken) {
+            alert("로그인이 필요합니다.");
+            navigate("/"); // 로그인 페이지로 리디렉션
+            return;
+        }
+
+        // 삭제 요청 보내기
+        fetch(`/diary/delete/${post.id}/`, {
+            method: "DELETE",
+            headers: {
+                "Authorization": `Bearer ${accessToken}`, // 토큰 추가
+            },
+        })
+            .then((response) => {
+                if (response.ok) {
+                    alert("게시글이 삭제되었습니다.");
+                    // 삭제 후 게시글 목록에서 해당 아이템 삭제
+                    window.location.reload(); // 페이지 새로 고침 (새로고침 대신 상태 관리로 해결할 수도 있음)
+                } else {
+                    alert("삭제에 실패했습니다.");
+                }
+            })
+            .catch((error) => {
+                console.error("삭제 중 오류 발생:", error);
+                alert("삭제 중 문제가 발생했습니다.");
+            });
+        setIsModalOpen(false); // 모달 닫기
     };
 
     const handleCancelDelete = () => {
-        setIsModalOpen(false);
+        setIsModalOpen(false); // 모달 닫기
     };
 
     return (
@@ -108,10 +135,10 @@ function PostListItem({ post, onClick }) {
                     <EditButton
                         onClick={(e) => {
                             e.stopPropagation();
-                            navigate("/");
+                            navigate("/postedit");
                         }}
                     >
-                        EDIT
+                        수정
                     </EditButton>
                     <DeleteButton
                         onClick={(e) => {
@@ -119,7 +146,7 @@ function PostListItem({ post, onClick }) {
                             handleDelete();
                         }}
                     >
-                        DELETE
+                        삭제
                     </DeleteButton>
                 </ContentWrapper2>
             </Wrapper>
