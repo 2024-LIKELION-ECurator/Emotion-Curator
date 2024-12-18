@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import * as S from "./Poststyled";
-import DeleteModal from "../../components/modals/deleteModal";
 import PostListComponent from "../../components/lists/PostListComponent";
 
 const PostList = () => {

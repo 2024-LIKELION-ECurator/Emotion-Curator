@@ -51,6 +51,7 @@ export const Button = styled.div`
   flex-direction: column;
   background-color: #000000;
   border: 1px solid #000;
+  cursor: pointer;
   margin-top: 10px;
   color: #FFFFFF;
   border-radius: 15px;
@@ -63,6 +64,7 @@ export const Button2 = styled.div`
   height: 36px;
   flex-direction: column;
   background-color: #FFFFFF;
+  cursor: pointer;
   color: #000;
   border: 1px solid #000;
   border-radius: 15px;
