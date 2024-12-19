@@ -88,7 +88,7 @@ function PostListItem({ post, onClick }) {
     };
 
     const handleConfirmDelete = () => {
-        const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NDQwMDQ1LCJpYXQiOjE3MzQzNTM2NDUsImp0aSI6ImFmOGZjNWI1YmE3NzQ0NmJiMjBlMmQzMTJmNmQ5NzRkIiwidXNlcl9pZCI6Mn0.RI2P7VSa0vD2qoRR3PPfOtiWJ6Zrn6NpFJTX9dPAe-w";
+        const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NTcxMzc2LCJpYXQiOjE3MzQ0ODQ5NzYsImp0aSI6IjZiZmY3NzkyZWJmMzRlZTU4YzIzZGY4Y2JjZGYyZDQwIiwidXNlcl9pZCI6Mn0.bt8uHdRa7bZEepJBWemFUOXPRSJCW_8NRjleFWznkt4";
 
         if (!accessToken) {
             alert("로그인이 필요합니다.");

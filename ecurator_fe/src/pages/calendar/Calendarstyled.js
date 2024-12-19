@@ -9,14 +9,12 @@ export const Background = styled.div`
   justify-content: center;
   align-items: center;
 
-  background: url("/images/background.svg") no-repeat center center;
-  background-size: cover;
 `;
 
 export const CalendarWrap = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 150px;
+  margin-top: 50px;
   img {
     cursor: pointer;
     width: 40px;
