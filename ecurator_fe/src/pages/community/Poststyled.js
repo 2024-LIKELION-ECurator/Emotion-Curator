@@ -6,8 +6,6 @@ export const Container = styled.div`
     align-items: center;
     width: 100%;
     min-height: 100vh;
-    background: url('/images/background.svg') no-repeat center center;
-    background-size: cover;
 `;
 
 export const Main = styled.div`
@@ -43,7 +41,7 @@ export const Button = styled.div`
 
 //postwrite
 export const Title = styled.div`
-    margin-top: 152px;
+    margin-top: 52px;
 `;
 
 export const TextInput = styled.div`

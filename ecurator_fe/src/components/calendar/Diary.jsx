@@ -1,4 +1,4 @@
-import "./Diary.css";
+//import "./Diary.css";
 import { useNavigate } from "react-router-dom";
 
 function Diary() {

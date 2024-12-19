@@ -10,7 +10,6 @@ export const ModalOverlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-
   z-index: 20;
 `;
 
@@ -26,16 +25,18 @@ export const ModalContent = styled.div`
   width: 458px;
   height: 236px;
   box-sizing: border-box;
-  background-color: #D8E3E4;
+  background-color: #d8e3e4;
   position: relative;
 `;
 
 export const TextType = styled.div`
-  font-size: 20px
+  font-size: 20px;
+  color: black; /* 텍스트는 검정색 */
 `;
 
 export const SubText = styled.div`
-  font-size: 15px
+  font-size: 15px;
+  color: black; /* 텍스트는 검정색 */
 `;
 
 export const Row = styled.div`
@@ -53,25 +54,25 @@ export const Button = styled.div`
   border: 1px solid #000;
   cursor: pointer;
   margin-top: 10px;
-  color: #FFFFFF;
+  color: #ffffff; /* 삭제 버튼 텍스트는 흰색 */
   border-radius: 15px;
-  align-items: center; /* 가로축 가운데 정렬 */
-  justify-content: center; /* 세로축 가운데 정렬 */
+  align-items: center;
+  justify-content: center;
 `;
+
 export const Button2 = styled.div`
   display: flex;
   width: 120px;
   height: 36px;
   flex-direction: column;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   cursor: pointer;
-  color: #000;
+  color: #000000; /* 취소 버튼 텍스트는 검정색 */
   border: 1px solid #000;
   border-radius: 15px;
-  align-items: center; /* 가로축 가운데 정렬 */
-  justify-content: center; /* 세로축 가운데 정렬 */
+  align-items: center;
+  justify-content: center;
 `;
-
 
 export const ModalContent2 = styled.div`
   display: flex;
@@ -85,13 +86,13 @@ export const ModalContent2 = styled.div`
   width: 458px;
   height: 236px;
   box-sizing: border-box;
-  background-color: #D8E3E4;
+  background-color: #d8e3e4;
   position: relative;
-  `;
+`;
 
 export const TextType2 = styled.div`
-  font-size: 20px
-  
+  font-size: 20px;
+  color: black; /* 텍스트는 검정색 */
 `;
 
 export const SubText2 = styled.div`
