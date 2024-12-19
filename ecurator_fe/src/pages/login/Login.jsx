@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Login.css";
 import logo1 from "../../images/logo.png";
 import { Link, useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ function Login() {
   });
 
   const [loading, setLoading] = useState(false); // 로딩 상태
+  const [userInfo, setUserInfo] = useState(null); // 사용자 정보 상태
   const navigate = useNavigate();
 
   // 입력값 변경 처리
@@ -27,14 +28,10 @@ function Login() {
     setLoading(true);
 
     try {
-      const accessToken = localStorage.getItem("access_token");
-
-      // 요청을 보낼 때 base URL 없이 상대 URL 사용
       const response = await fetch("/users/login/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "Authorization": accessToken ? `Bearer ${accessToken}` : "", // 토큰 추가
         },
         body: JSON.stringify({
           username: formData.username,
@@ -47,7 +44,25 @@ function Login() {
         console.log("로그인 성공:", data);
 
         // access_token을 로컬 스토리지에 저장
-        localStorage.setItem("access_token", data.access);
+        const accessToken = data.access;
+        localStorage.setItem("access_token", accessToken);
+
+        // 사용자 정보 가져오기
+        const userResponse = await fetch("/users/profile/", {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${accessToken}`,
+          },
+        });
+
+        if (userResponse.ok) {
+          const userData = await userResponse.json();
+          console.log("사용자 정보:", userData);
+          setUserInfo(userData); // 사용자 정보 상태 업데이트
+        } else {
+          console.error("사용자 정보 가져오기 실패");
+        }
 
         // 마이페이지로 리디렉션
         navigate("/mypage");
@@ -114,6 +129,14 @@ function Login() {
       <p className="register">
         <Link to="/signup">회원가입</Link>
       </p>
+
+      {/* 사용자 정보 표시 */}
+      {userInfo && (
+        <div className="user-info">
+          <p>이름: {userInfo.name}</p>
+          <p>생일: {userInfo.birthday}</p>
+        </div>
+      )}
     </div>
   );
 }
