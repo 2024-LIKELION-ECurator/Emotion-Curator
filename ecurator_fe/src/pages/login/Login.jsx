@@ -65,7 +65,7 @@ function Login() {
         }
 
         // 마이페이지로 리디렉션
-        navigate("/mypage");
+        navigate("/");
       } else {
         console.error("로그인 실패:", response);
         alert("아이디 또는 비밀번호가 잘못되었습니다.");
