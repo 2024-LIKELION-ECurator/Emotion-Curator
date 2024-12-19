@@ -13,6 +13,7 @@ import relieved from "../../images/stc_relieved.png";
 import sad from "../../images/stc_sad.png";
 import surprised from "../../images/stc_surprised.png";
 import sleepy from "../../images/stc_sleepy.png";
+import ModalAcess from "../../components/modals/ModalAcess"; // 모달 컴포넌트 import
 
 import Emotion from "../../components/calendar/Emotion";
 import Diary from "../../components/calendar/Diary";
@@ -32,6 +33,8 @@ const Calendar = () => {
     emotion: [],
     diary: [],
   });
+  const [isModalOpen, setIsModalOpen] = useState(false); // 모달 상태 추가
+
   const year = currentDate.getFullYear();
   const month = currentDate.getMonth();
 
@@ -108,8 +111,13 @@ const Calendar = () => {
   };
 
   useEffect(() => {
+    // 로그인 상태 확인
+    const accessToken = localStorage.getItem("access_token");
+    if (!accessToken) {
+      setIsModalOpen(true); // 로그인되지 않으면 모달을 띄움
+    }
+
     const fetchData = async () => {
-      const accessToken = localStorage.getItem("access_token");
       try {
         const response = await axios.get(`/emo_calendar/emotion-history/${year}/${month + 1}/`, {
           headers: {
@@ -126,6 +134,11 @@ const Calendar = () => {
     };
     fetchData();
   }, [year, month]);
+
+  // 모달 닫기 함수
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <S.Background>
@@ -182,7 +195,11 @@ const Calendar = () => {
 
         {visibleComponent === "diary" && <Diary selectedDate={selectedDate} setVisibleComponent={setVisibleComponent} />}
       </S.Wrap>
+
+      {/* 로그인되지 않으면 모달을 띄움 */}
+      {isModalOpen && <ModalAcess onClose={handleCloseModal} />}
     </S.Background>
   );
 };
+
 export default Calendar;
