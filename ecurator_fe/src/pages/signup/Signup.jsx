@@ -71,7 +71,7 @@ function Signup() {
     }
 
     try {
-      const response = await fetch("http://13.125.7.131/users/register/", {
+      const response = await fetch(`/users/register/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

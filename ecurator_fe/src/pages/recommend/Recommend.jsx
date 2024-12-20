@@ -67,28 +67,29 @@ function Recommend() {
         <div className="category">
           <p className="category-title"><a className="musicpink">MUSIC</a> FOR YOU</p>
           <ol>
-            <li>노래 제목 - 가수 이름</li>
-            <li>노래 제목 - 가수 이름</li>
-            <li>노래 제목 - 가수 이름</li>
-            <li>노래 제목 - 가수 이름</li>
+            <li>봄날 - 방탄소년단</li>
+            <li>아이처럼 - 선미</li>
+            <li>좋은 날 - 아이유</li>
+            <li>라일락 - 아이유</li>
+            <li>어푸 - 이달의 소녀</li>
           </ol>
         </div>
         <div className="category">
           <p className="category-title"><a className="moviegreen">MOVIES</a> FOR YOU</p>
           <ol>
-            <li>영화 제목 - 감독 이름</li>
-            <li>영화 제목 - 감독 이름</li>
-            <li>영화 제목 - 감독 이름</li>
-            <li>영화 제목 - 감독 이름</li>
+            <li>기생충 - 봉준호</li>
+            <li>어벤져스: 엔드게임 - 안소니 루소, 조 루소</li>
+            <li>택시운전사 - 장훈</li>
+            <li>올드보이 - 박찬욱</li>
           </ol>
         </div>
         <div className="category">
           <p className="category-title"><a className="bookblue">BOOKS</a> FOR YOU</p>
           <ol>
-            <li>책 제목 - 작가 이름</li>
-            <li>책 제목 - 작가 이름</li>
-            <li>책 제목 - 작가 이름</li>
-            <li>책 제목 - 작가 이름</li>
+            <li>82년생 김지영 - 조남주</li>
+            <li>어린 왕자 - 앙투안 드 생텍쥐페리</li>
+            <li>채식주의자 - 한강</li>
+            <li>미움받을 용기 - 기시미 이치로, 고가 후미타케</li>
           </ol>
         </div>
       </div>

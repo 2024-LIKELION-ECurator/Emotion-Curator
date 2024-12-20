@@ -16,8 +16,7 @@ const PostWrite = () => {
     // 게시글 등록 핸들러
     const handleRegisterModal = async () => {
         const payload = { title, content }; // 서버로 보낼 데이터
-        const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NTcxMzc2LCJpYXQiOjE3MzQ0ODQ5NzYsImp0aSI6IjZiZmY3NzkyZWJmMzRlZTU4YzIzZGY4Y2JjZGYyZDQwIiwidXNlcl9pZCI6Mn0.bt8uHdRa7bZEepJBWemFUOXPRSJCW_8NRjleFWznkt4";
-
+        const accessToken = localStorage.getItem("access_token");
 
         if (!accessToken) {
             alert("로그인이 필요합니다.");
@@ -36,7 +35,6 @@ const PostWrite = () => {
             });
 
             if (response.ok) {
-                alert("일기가 등록되었습니다.");
                 navigate("/community"); // 등록 성공 시 페이지 이동
             } else {
                 const errorData = await response.json();

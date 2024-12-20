@@ -88,7 +88,7 @@ function PostListItem({ post, onClick }) {
     };
 
     const handleConfirmDelete = () => {
-        const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NTcxMzc2LCJpYXQiOjE3MzQ0ODQ5NzYsImp0aSI6IjZiZmY3NzkyZWJmMzRlZTU4YzIzZGY4Y2JjZGYyZDQwIiwidXNlcl9pZCI6Mn0.bt8uHdRa7bZEepJBWemFUOXPRSJCW_8NRjleFWznkt4";
+        const accessToken = localStorage.getItem("access_token");
 
         if (!accessToken) {
             alert("로그인이 필요합니다.");
@@ -105,8 +105,6 @@ function PostListItem({ post, onClick }) {
         })
             .then((response) => {
                 if (response.ok) {
-                    alert("게시글이 삭제되었습니다.");
-                    // 삭제 후 게시글 목록에서 해당 아이템 삭제
                     window.location.reload(); // 페이지 새로 고침 (새로고침 대신 상태 관리로 해결할 수도 있음)
                 } else {
                     alert("삭제에 실패했습니다.");
@@ -135,7 +133,7 @@ function PostListItem({ post, onClick }) {
                     <EditButton
                         onClick={(e) => {
                             e.stopPropagation();
-                            navigate("/postedit");
+                            navigate(`/postedit/${post.id}`);
                         }}
                     >
                         수정

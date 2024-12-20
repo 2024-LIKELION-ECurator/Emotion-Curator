@@ -11,10 +11,9 @@ function Mypage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // 액세스 토큰을 직접 추가
-    const accessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzM0NTcxMzc2LCJpYXQiOjE3MzQ0ODQ5NzYsImp0aSI6IjZiZmY3NzkyZWJmMzRlZTU4YzIzZGY4Y2JjZGYyZDQwIiwidXNlcl9pZCI6Mn0.bt8uHdRa7bZEepJBWemFUOXPRSJCW_8NRjleFWznkt4";
+    // 액세스 토큰을 로컬스토리지에서 가져오기
+    const accessToken = localStorage.getItem("access_token");
 
-    // 사용자가 로그인한 후에만 정보 요청
     if (!accessToken) {
       alert("로그인이 필요합니다.");
       navigate("/login"); // 로그인 페이지로 리디렉션
@@ -28,13 +27,22 @@ function Mypage() {
         "Authorization": `Bearer ${accessToken}`,
       },
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.status === 401) {
+          alert("인증이 만료되었습니다. 다시 로그인해주세요.");
+          navigate("/login");
+          return;
+        }
+        return response.json();
+      })
       .then((data) => {
-        setProfile({
-          nickname: data.nickname,
-          birthdate: data.birthdate,
-          profileImage: data.profile_image || "/media/profile_images/default.png",
-        });
+        if (data) {
+          setProfile({
+            nickname: data.nickname,
+            birthdate: data.birthdate,
+            profileImage: data.profile_image || "/media/profile_images/default.png",
+          });
+        }
       })
       .catch((error) => {
         console.error("프로필 정보 가져오기 오류:", error);
