@@ -43,7 +43,6 @@ const emotions = [
 ];
 
 function Emotion({ selectedDate, onEmotionSubmit, emotionId }) {
-  const [emotionState, setEmotionState] = useState("unregistered");
   const accessToken = localStorage.getItem("access_token");
 
   const [emotionData, setEmotionData] = useState(() => {
@@ -81,6 +80,7 @@ function Emotion({ selectedDate, onEmotionSubmit, emotionId }) {
         const existingEmotion = emotionData.find((item) => new Date(item.date).toLocaleDateString("en-CA") === formattedDate);
 
         if (existingEmotion) {
+          onEmotionSubmit();
           const EmotionId = existingEmotion.id; // 수정할 ID 가져오기
           console.log("수정할 EmotionId: ", EmotionId);
 
@@ -103,7 +103,6 @@ function Emotion({ selectedDate, onEmotionSubmit, emotionId }) {
               return;
             }
 
-            // 감정 수정 후 로컬 데이터도 업데이트
             setEmotionData((prev) => prev.map((item) => (item.id === EmotionId ? { ...item, emotion_name: emotionName } : item)));
           } catch (error) {
             console.error("감정 수정 실패: ", error);
@@ -112,7 +111,7 @@ function Emotion({ selectedDate, onEmotionSubmit, emotionId }) {
           console.warn("해당 날짜에 대한 기존 데이터가 없습니다.");
         }
 
-        return; // PUT 작업 후 함수 종료
+        return;
       }
 
       const newEmotion = {

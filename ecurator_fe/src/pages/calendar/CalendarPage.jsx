@@ -84,7 +84,18 @@ const Calendar = () => {
   const handleDayClick = (day) => {
     const dateKey = day.toDateString();
     setSelectedDate(dateKey);
-    setVisibleComponent("emotion");
+    const today = new Date().toDateString();
+    const isToday = dateKey === today;
+
+    const formattedDate = day.toLocaleDateString("en-CA");
+    const matchedEmotion = emotionData.find((item) => item.date === formattedDate);
+
+    // 당일 감정만 수정 가능 (당일이 아니고, 이미 감정 등록 -> 다이어리)
+    if (matchedEmotion && !isToday) {
+      setVisibleComponent("diary");
+    } else {
+      setVisibleComponent("emotion");
+    }
   };
 
   // 감정 등록 -> 다이어리
