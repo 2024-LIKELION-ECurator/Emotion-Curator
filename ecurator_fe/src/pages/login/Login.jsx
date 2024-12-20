@@ -28,7 +28,7 @@ function Login() {
     setLoading(true);
 
     try {
-      const response = await fetch("/users/login/", {
+      const response = await fetch(`/users/login/`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -46,23 +46,6 @@ function Login() {
         // access_token을 로컬 스토리지에 저장
         const accessToken = data.access;
         localStorage.setItem("access_token", accessToken);
-
-        // 사용자 정보 가져오기
-        const userResponse = await fetch("/users/profile/", {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`,
-          },
-        });
-
-        if (userResponse.ok) {
-          const userData = await userResponse.json();
-          console.log("사용자 정보:", userData);
-          setUserInfo(userData); // 사용자 정보 상태 업데이트
-        } else {
-          console.error("사용자 정보 가져오기 실패");
-        }
 
         // 마이페이지로 리디렉션
         navigate("/");

@@ -35,7 +35,6 @@ const PostWrite = () => {
             });
 
             if (response.ok) {
-                alert("일기가 등록되었습니다.");
                 navigate("/community"); // 등록 성공 시 페이지 이동
             } else {
                 const errorData = await response.json();
