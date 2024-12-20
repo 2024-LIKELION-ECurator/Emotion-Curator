@@ -65,7 +65,6 @@ const PostEdit = () => {
             });
 
             if (response.ok) {
-                alert("게시글이 수정되었습니다.");
                 navigate("/community"); // 수정 성공 시 페이지 이동
             } else {
                 const errorData = await response.json();

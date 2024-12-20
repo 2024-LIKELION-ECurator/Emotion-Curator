@@ -105,8 +105,6 @@ function PostListItem({ post, onClick }) {
         })
             .then((response) => {
                 if (response.ok) {
-                    alert("게시글이 삭제되었습니다.");
-                    // 삭제 후 게시글 목록에서 해당 아이템 삭제
                     window.location.reload(); // 페이지 새로 고침 (새로고침 대신 상태 관리로 해결할 수도 있음)
                 } else {
                     alert("삭제에 실패했습니다.");
